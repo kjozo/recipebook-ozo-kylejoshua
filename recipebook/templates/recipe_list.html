@@ -1,23 +1,26 @@
 <!DOCTYPE html>
-<html lang = "en">
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+
+    <title>Recipes List</title>
+
+</head>
 
 
-    <head>
-        <meta charset = "UTF=8">
-        <title> List </title>
-    </head>
+<body>
+    <h1>Recipe Book</h1>
+    <h2>Recipes List</h2>
 
-    <body>
+    <ul>
+        {% for recipe in recipes %}
+        <li><a href="{{ recipe.get_absolute_url }}">{{ recipe.name }}</a></li>
+        <li><a href="/example-url/">Example Link</a></li>
+        {% endfor %}
+    </ul>
 
-        <h1> Recipe Book </h1>
-        <h2> Recipe List </h2>
+</body>
 
-        <ul>
-            {% for recipe in recipes %}
-            <li> <a href = "{{ recipe.link }}" > {{ recipe.name }} </a></li>
-            {% endfor %}
-        </ul>
-    </body>
 
-    
 </html>
