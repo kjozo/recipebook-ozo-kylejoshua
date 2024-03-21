@@ -1,5 +1,6 @@
 from django.urls import path
 from .views import RecipeListView, RecipeDetailView
+from django.contrib.auth.views import LoginView, LogoutView
 
 urlpatterns = [
 

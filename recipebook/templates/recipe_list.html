@@ -9,14 +9,31 @@
 </head>
 
 
-<body>
+<header>
+
     <h1>Recipe Book</h1>
-    <h2>Recipes List</h2>
+    {% if request.user.is_authenticated %}
+    <h2> User: {{ request.user.username}} </h2>
+    <form action = "{% url 'logout' %}" method = "POST">
+        {% csrf_token %}
+        <button type = "submit"> Log Out </button>
+    </form>
+    {% else %}
+    <h3>
+        Please <a href = "{% url 'login' %}"> login </a>
+    </h3>
+    {% endif %}
+    
+</header>
+
+
+<body>
+
+    <h3>Recipes List</h2>
 
     <ul>
         {% for recipe in recipes %}
         <li><a href="{{ recipe.get_absolute_url }}">{{ recipe.name }}</a></li>
-        <li><a href="/example-url/">Example Link</a></li>
         {% endfor %}
     </ul>
 
